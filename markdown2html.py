@@ -8,7 +8,6 @@ Second argument is the output file name
 
 import os
 import sys
-import markdown
 
 
 if __name__ == "__main__":
