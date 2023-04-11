@@ -8,6 +8,7 @@ Second argument is the output file name
 
 import os
 import sys
+import re
 
 
 if __name__ == "__main__":
@@ -21,4 +22,14 @@ if __name__ == "__main__":
     if not os.path.isfile(markdown_file):
         sys.stderr.write("Missing " + markdown_file + "\n")
         sys.exit(1)
+
+    with open(markdown_file, "r") as f:
+        markdown_text = f.read()
+
+    heading_pattern = re.compile(r'^(#+) (.+)$', re.MULTILINE)
+
+    html_text = re.sub(heading_pattern, lambda match: "<h" + str(len(match.group(1))) + ">" + match.group(2) + "</h" + str(len(match.group(1))) + ">", markdown_text)
+
+    with open(output_file, "w") as f:
+        f.write(html_text)
     exit(0)
