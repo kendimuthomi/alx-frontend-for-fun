@@ -30,6 +30,10 @@ if __name__ == "__main__":
 
     html_text = re.sub(heading_pattern, lambda match: "<h" + str(len(match.group(1))) + ">" + match.group(2) + "</h" + str(len(match.group(1))) + ">", markdown_text)
 
+    list_pattern = r'^- (.+)$'
+
+    html_text = re.sub(list_pattern, r'<ul>\n<li>\1</li>\n</ul>', html_text, flags=re.MULTILINE)
+
     with open(output_file, "w") as f:
         f.write(html_text)
     exit(0)
