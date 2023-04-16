@@ -23,17 +23,21 @@ if __name__ == "__main__":
         sys.stderr.write("Missing " + markdown_file + "\n")
         sys.exit(1)
 
-    with open(markdown_file, "r") as f:
-        markdown_text = f.read()
+   with open(input_file, encoding='utf-8') as file_1:
+        html_content = []
+        md_content = [line[:-1] for line in file_1.readlines()]
+        for line in md_content:
+            heading = re.split(r'#{1,6} ', line)
+            if len(heading) > 1:
+                # Compute the number of the # present to
+                # determine heading level
+                h_level = len(line[:line.find(heading[1])-1])
+                # Append the html equivalent of the heading
+                html_content.append(
+                    f'<h{h_level}>{heading[1]}</h{h_level}>\n'
+                )
+            else:
+                html_content.append(line)
 
-    heading_pattern = re.compile(r'^(#+) (.+)$', re.MULTILINE)
-
-    html_text = re.sub(heading_pattern, lambda match: "<h" + str(len(match.group(1))) + ">" + match.group(2) + "</h" + str(len(match.group(1))) + ">", markdown_text)
-
-    list_pattern = r'^- (.+)$'
-
-    html_text = re.sub(list_pattern, r'<ul>\n<li>\1</li>\n</ul>', html_text, flags=re.MULTILINE)
-
-    with open(output_file, "w") as f:
-        f.write(html_text)
-    exit(0)
+    with open(output_file, 'w', encoding='utf-8') as file_2:
+        file_2.writelines(html_content) 
