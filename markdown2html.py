@@ -23,7 +23,7 @@ if __name__ == "__main__":
         sys.stderr.write("Missing " + markdown_file + "\n")
         sys.exit(1)
 
-   with open(input_file, encoding='utf-8') as file_1:
+    with open(input_file, encoding='utf-8') as file_1:
         html_content = []
         md_content = [line[:-1] for line in file_1.readlines()]
         for line in md_content:
@@ -40,4 +40,4 @@ if __name__ == "__main__":
                 html_content.append(line)
 
     with open(output_file, 'w', encoding='utf-8') as file_2:
-        file_2.writelines(html_content) 
+        file_2.writelines(html_content)
