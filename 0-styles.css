@@ -1,0 +1,27 @@
+ul {
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: black;
+    border: 2px solid gray;
+    margin: 5px;
+    border-radius: 0.5rem;
+    padding-top: 14px;
+}
+
+.icon {
+    background: url('./0-sprite.png') no-repeat center fixed;
+    display: inline-block;
+    text-align: center;
+    height: 400px;
+    width: 320px;
+}
