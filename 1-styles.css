@@ -1,0 +1,31 @@
+a {
+  position: relative;
+  color: #A607A8;
+  text-decoration: none;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+a:hover::before {
+  animation: underline 0.5s ease forwards;
+  color: #A607A8;
+}
+
+@keyframes underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
