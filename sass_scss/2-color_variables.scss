@@ -1,0 +1,16 @@
+/* file that assigns the text color #3D3D3D to the HTML tags body and p */
+$text-color: #3D3D3D;
+$new-color: #6D6D6D;
+
+body {
+  color: $text-color;
+  background-color: $new-color;
+}
+
+p {
+  color: $text-color;
+}
+
+h2 {
+  background-color: $new-color;
+}
